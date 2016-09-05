@@ -18,7 +18,7 @@
 		3F72BC931D7DEF55000D3323 /* ScaleCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleCalculator.swift; sourceTree = "<group>"; };
 		3F72BC951D7DEFA9000D3323 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		3F72BC961D7DEFA9000D3323 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		3F72BC971D7DF08E000D3323 /* KINScaleCalculator.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = KINScaleCalculator.podspec; path = ../KINScaleCalculator.podspec; sourceTree = "<group>"; };
+		3F72BC991D7DF563000D3323 /* KinderScaleCalculator.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = KinderScaleCalculator.podspec; path = ../KinderScaleCalculator.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +37,7 @@
 			children = (
 				3F72BC951D7DEFA9000D3323 /* LICENSE */,
 				3F72BC961D7DEFA9000D3323 /* README.md */,
-				3F72BC971D7DF08E000D3323 /* KINScaleCalculator.podspec */,
+				3F72BC991D7DF563000D3323 /* KinderScaleCalculator.podspec */,
 				3F72BC8A1D7DEF28000D3323 /* KinderScaleCalculator */,
 				3F72BC891D7DEF28000D3323 /* Products */,
 			);
@@ -291,6 +291,7 @@
 				3F72BC921D7DEF28000D3323 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
