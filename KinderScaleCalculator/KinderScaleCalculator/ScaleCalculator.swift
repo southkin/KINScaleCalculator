@@ -1,0 +1,88 @@
+//
+//  ScaleCalculator.swift
+//  KinderScaleCalculator
+//
+//  Created by kin on 2016. 9. 6..
+//  Copyright © 2016년 kin. All rights reserved.
+//
+
+import UIKit
+public enum DeviceType {
+    case IPHONE_320_480 // iPhone 4s
+    case IPHONE_320_568 // iPhone 5, iPhone 5s
+    case IPHONE_375_667 // iPhone 6, iPhone 6s
+    case IPHONE_414_736 // iPhone 6+, iPhone 6s+
+    case IPAD_768_1024 // iPad
+    case IPAD_1024_1366 // iPad Pro
+    case ELSE
+}
+let rects:[DeviceType:CGSize] = [
+    .IPHONE_320_480:CGSizeMake(320, 480),
+    .IPHONE_320_568:CGSizeMake(320, 568),
+    .IPHONE_375_667:CGSizeMake(375, 667),
+    .IPHONE_414_736:CGSizeMake(414, 736),
+    .IPAD_768_1024:CGSizeMake(768, 1024),
+    .IPAD_1024_1366:CGSizeMake(1024, 1366)
+]
+public class ScaleCalculator: NSObject {
+    let deviceType:DeviceType
+    let baseType:DeviceType
+    let w_scale:CGFloat
+    let h_scale:CGFloat
+    public init(device:DeviceType) {
+        switch UIScreen.mainScreen().bounds.size {
+        case rects[.IPHONE_320_480]! :
+            deviceType = .IPHONE_320_480
+            break
+        case rects[.IPHONE_320_568]! :
+            deviceType = .IPHONE_320_568
+            break
+        case rects[.IPHONE_375_667]! :
+            deviceType = .IPHONE_375_667
+            break
+        case rects[.IPHONE_414_736]! :
+            deviceType = .IPHONE_414_736
+            break
+        case rects[.IPAD_768_1024]! :
+            deviceType = .IPAD_768_1024
+            break
+        case rects[.IPAD_1024_1366]! :
+            deviceType = .IPAD_1024_1366
+            break
+        default:
+            deviceType = .ELSE
+            break
+        }
+        baseType = device
+        w_scale = rects[deviceType]!.width / rects[baseType]!.width
+        h_scale = rects[deviceType]!.height / rects[baseType]!.height
+    }
+    public func rect(rect:CGRect) -> CGRect {
+        return self.rect(rect,adjustHeight: false)
+    }
+    public func rect(rect:CGRect, adjustHeight:Bool) -> CGRect {
+        return CGRectMake(rect.origin.x * w_scale,
+                          rect.origin.y * (adjustHeight ? h_scale : w_scale),
+                          rect.size.width * w_scale,
+                          rect.size.height * (adjustHeight ? h_scale : w_scale))
+    }
+    public func size(size:CGSize) -> CGSize {
+        return self.size(size,adjustHeight: false)
+    }
+    public func size(size:CGSize, adjustHeight:Bool) -> CGSize {
+        return CGSizeMake(size.width * w_scale, size.height * (adjustHeight ? h_scale : w_scale))
+    }
+    public func point(point:CGPoint) -> CGPoint {
+        return self.point(point,adjustHeight: false)
+    }
+    public func point(point:CGPoint, adjustHeight:Bool) -> CGPoint {
+        return CGPointMake(point.x * w_scale, point.y * (adjustHeight ? h_scale : w_scale))
+    }
+    public func setView(view:UIView) {
+        setView(view,adjustHeight: false)
+    }
+    public func setView(view:UIView, adjustHeight:Bool) {
+        let frame = rect(view.frame,adjustHeight: adjustHeight)
+        view.frame = frame
+    }
+}
