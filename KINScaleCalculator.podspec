@@ -91,10 +91,10 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "KINScaleCalculator", "KINScaleCalculator/**/*.{h,m}"
-  s.exclude_files = "KINScaleCalculator/Exclude"
+  s.source_files  = "KinderScaleCalculator", "KinderScaleCalculator/**/*.{h,m}"
+  s.exclude_files = "KinderScaleCalculator/Exclude"
 
-  # s.public_header_files = "KINScaleCalculator/**/*.h"
+  # s.public_header_files = "KinderScaleCalculator/**/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
