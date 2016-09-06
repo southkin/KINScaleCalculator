@@ -90,4 +90,11 @@ public class ScaleCalculator: NSObject {
         let frame = rect(view.frame,adjustHeight: adjustHeight)
         view.frame = frame
     }
+    public func setLayer(layer:CALayer) {
+        setLayer(layer,adjustHeight: false)
+    }
+    public func setLayer(layer:CALayer, adjustHeight:Bool) {
+        let frame = rect(layer.frame, adjustHeight:adjustHeight)
+        layer.frame = frame
+    }
 }

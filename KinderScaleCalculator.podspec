@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'KinderScaleCalculator'
-s.version          = '0.0.13'
+s.version          = '0.0.2'
 s.summary          = 'scale calculator'
 
 # This description is used to generate tags and improve search results.
@@ -21,16 +21,16 @@ s.description      = <<-DESC
 작업베이스화면 대비 실제 화면에서의 사이즈,위치를 계산
 DESC
 
-s.homepage         = 'https://github.com/southkin/KinderScaleCalculator'
+s.homepage         = 'https://github.com/southkin/KINScaleCalculator.git'
 # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
 s.license          = { :type => 'MIT', :file => 'LICENSE' }
 s.author           = { 'kin' => 'south.kin@gmail.com' }
-s.source           = { :git => 'https://github.com/southkin/KinderScaleCalculator.git', :tag => s.version.to_s }
+s.source           = { :git => 'https://github.com/southkin/KINScaleCalculator.git', :tag => s.version.to_s }
 # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
 s.ios.deployment_target = '8.0'
 
-s.source_files = 'KinderScaleCalculator/Classes/**/*'
+s.source_files = 'KinderScaleCalculator/KinderScaleCalculator/**/*'
 
 # s.resource_bundles = {
 #   'KinderScaleCalculator' => ['KinderScaleCalculator/Assets/*.png']
