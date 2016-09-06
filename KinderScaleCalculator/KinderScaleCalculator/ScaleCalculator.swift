@@ -34,6 +34,38 @@ public class ScaleCalculator: NSObject {
     let baseType:DeviceType
     let w_scale:CGFloat
     let h_scale:CGFloat
+    static var shared:ScaleCalculator?
+    public func setDefaultDevice(device:DeviceType) {
+        ScaleCalculator.shared = ScaleCalculator(device: device)
+    }
+    static public func convert<T>(value:T) -> T {
+        return convert(value, adjustHeight: false)
+    }
+    static public func convert<T>(value:T, adjustHeight:Bool) -> T {
+        if let scale:ScaleCalculator = shared {
+            if let floatValue:CGFloat = value as? CGFloat {
+                return scale.float(floatValue,adjustHeight: adjustHeight) as! T
+            }
+            if let rect = value as? CGRect {
+                return scale.rect(rect, adjustHeight: adjustHeight) as! T
+            }
+            if let size = value as? CGSize {
+                return scale.size(size, adjustHeight: adjustHeight) as! T
+            }
+            if let point = value as? CGPoint {
+                return scale.point(point, adjustHeight: adjustHeight) as! T
+            }
+            if let view = value as? UIView {
+                scale.setView(view)
+                return value
+            }
+            if let layer = value as? CALayer {
+                scale.setLayer(layer)
+                return value
+            }
+        }
+        return value
+    }
     public init(device:DeviceType) {
         switch UIScreen.mainScreen().bounds.size {
         case rects[.IPHONE_320_480]! :
