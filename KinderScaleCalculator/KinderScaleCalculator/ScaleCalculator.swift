@@ -62,6 +62,12 @@ public class ScaleCalculator: NSObject {
         w_scale = rects[deviceType]!.width / rects[baseType]!.width
         h_scale = rects[deviceType]!.height / rects[baseType]!.height
     }
+    public func float(float:CGFloat) -> CGFloat {
+        return self.float(float,adjustHeight: false)
+    }
+    public func float(float:CGFloat, adjustHeight:Bool) -> CGFloat {
+        return adjustHeight ? float * w_scale : float * h_scale
+    }
     public func rect(rect:CGRect) -> CGRect {
         return self.rect(rect,adjustHeight: false)
     }
