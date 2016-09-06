@@ -34,33 +34,7 @@ public class ScaleCalculator: NSObject {
     let baseType:DeviceType
     let w_scale:CGFloat
     let h_scale:CGFloat
-    public func convert<T>(value:T) -> T {
-        return convert(value, adjustHeight: false)
-    }
-    public func convert<T>(value:T, adjustHeight:Bool) -> T {
-        
-        if let floatValue:CGFloat = value as? CGFloat {
-            return self.float(floatValue,adjustHeight: adjustHeight) as! T
-        }
-        if let rect = value as? CGRect {
-            return self.rect(rect, adjustHeight: adjustHeight) as! T
-        }
-        if let size = value as? CGSize {
-            return self.size(size, adjustHeight: adjustHeight) as! T
-        }
-        if let point = value as? CGPoint {
-            return self.point(point, adjustHeight: adjustHeight) as! T
-        }
-        if let view = value as? UIView {
-            self.setView(view)
-            return value
-        }
-        if let layer = value as? CALayer {
-            self.setLayer(layer)
-            return value
-        }
-        return value
-    }
+    
     public init(device:DeviceType) {
         switch UIScreen.mainScreen().bounds.size {
         case rects[.IPHONE_320_480]! :
@@ -88,6 +62,33 @@ public class ScaleCalculator: NSObject {
         baseType = device
         w_scale = rects[deviceType]!.width / rects[baseType]!.width
         h_scale = rects[deviceType]!.height / rects[baseType]!.height
+    }
+    public func convert<T>(value:T) -> T {
+        return convert(value, adjustHeight: false)
+    }
+    public func convert<T>(value:T, adjustHeight:Bool) -> T {
+        
+        if let floatValue:CGFloat = value as? CGFloat {
+            return self.float(floatValue,adjustHeight: adjustHeight) as! T
+        }
+        if let rect = value as? CGRect {
+            return self.rect(rect, adjustHeight: adjustHeight) as! T
+        }
+        if let size = value as? CGSize {
+            return self.size(size, adjustHeight: adjustHeight) as! T
+        }
+        if let point = value as? CGPoint {
+            return self.point(point, adjustHeight: adjustHeight) as! T
+        }
+        if let view = value as? UIView {
+            self.setView(view)
+            return value
+        }
+        if let layer = value as? CALayer {
+            self.setLayer(layer)
+            return value
+        }
+        return value
     }
     public func float(float:CGFloat) -> CGFloat {
         return self.float(float,adjustHeight: false)
