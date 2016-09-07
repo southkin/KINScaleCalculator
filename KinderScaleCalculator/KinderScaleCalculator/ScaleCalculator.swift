@@ -67,7 +67,9 @@ public class ScaleCalculator: NSObject {
         return convert(value, adjustHeight: false)
     }
     public func convert<T>(value:T, adjustHeight:Bool) -> T {
-        
+        if let swiftFloat:Float = value as? Float {
+            return self.float(CGFloat(swiftFloat),adjustHeight: adjustHeight) as! T
+        }
         if let floatValue:CGFloat = value as? CGFloat {
             return self.float(floatValue,adjustHeight: adjustHeight) as! T
         }
