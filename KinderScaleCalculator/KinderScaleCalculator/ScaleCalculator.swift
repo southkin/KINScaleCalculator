@@ -13,60 +13,60 @@ internal class test {
     }
 }
 public enum DeviceType {
-    case IPHONE_320_480 // iPhone 4s
-    case IPHONE_320_568 // iPhone 5, iPhone 5s
-    case IPHONE_375_667 // iPhone 6, iPhone 6s
-    case IPHONE_414_736 // iPhone 6+, iPhone 6s+
-    case IPAD_768_1024 // iPad
-    case IPAD_1024_1366 // iPad Pro
-    case ELSE
+    case iphone_320_480 // iPhone 4s
+    case iphone_320_568 // iPhone 5, iPhone 5s
+    case iphone_375_667 // iPhone 6, iPhone 6s
+    case iphone_414_736 // iPhone 6+, iPhone 6s+
+    case ipad_768_1024 // iPad
+    case ipad_1024_1366 // iPad Pro
+    case `else`
 }
 let rects:[DeviceType:CGSize] = [
-    .IPHONE_320_480:CGSizeMake(320, 480),
-    .IPHONE_320_568:CGSizeMake(320, 568),
-    .IPHONE_375_667:CGSizeMake(375, 667),
-    .IPHONE_414_736:CGSizeMake(414, 736),
-    .IPAD_768_1024:CGSizeMake(768, 1024),
-    .IPAD_1024_1366:CGSizeMake(1024, 1366)
+    .iphone_320_480:CGSize(width: 320, height: 480),
+    .iphone_320_568:CGSize(width: 320, height: 568),
+    .iphone_375_667:CGSize(width: 375, height: 667),
+    .iphone_414_736:CGSize(width: 414, height: 736),
+    .ipad_768_1024:CGSize(width: 768, height: 1024),
+    .ipad_1024_1366:CGSize(width: 1024, height: 1366)
 ]
-public class ScaleCalculator: NSObject {
+open class ScaleCalculator: NSObject {
     let deviceType:DeviceType
     let baseType:DeviceType
     let w_scale:CGFloat
     let h_scale:CGFloat
     
     public init(device:DeviceType) {
-        switch UIScreen.mainScreen().bounds.size {
-        case rects[.IPHONE_320_480]! :
-            deviceType = .IPHONE_320_480
+        switch UIScreen.main.bounds.size {
+        case rects[.iphone_320_480]! :
+            deviceType = .iphone_320_480
             break
-        case rects[.IPHONE_320_568]! :
-            deviceType = .IPHONE_320_568
+        case rects[.iphone_320_568]! :
+            deviceType = .iphone_320_568
             break
-        case rects[.IPHONE_375_667]! :
-            deviceType = .IPHONE_375_667
+        case rects[.iphone_375_667]! :
+            deviceType = .iphone_375_667
             break
-        case rects[.IPHONE_414_736]! :
-            deviceType = .IPHONE_414_736
+        case rects[.iphone_414_736]! :
+            deviceType = .iphone_414_736
             break
-        case rects[.IPAD_768_1024]! :
-            deviceType = .IPAD_768_1024
+        case rects[.ipad_768_1024]! :
+            deviceType = .ipad_768_1024
             break
-        case rects[.IPAD_1024_1366]! :
-            deviceType = .IPAD_1024_1366
+        case rects[.ipad_1024_1366]! :
+            deviceType = .ipad_1024_1366
             break
         default:
-            deviceType = .ELSE
+            deviceType = .else
             break
         }
         baseType = device
         w_scale = rects[deviceType]!.width / rects[baseType]!.width
         h_scale = rects[deviceType]!.height / rects[baseType]!.height
     }
-    public func convert<T>(value:T) -> T {
+    open func convert<T>(_ value:T) -> T {
         return convert(value, adjustHeight: false)
     }
-    public func convert<T>(value:T, adjustHeight:Bool) -> T {
+    open func convert<T>(_ value:T, adjustHeight:Bool) -> T {
         if let swiftFloat:Float = value as? Float {
             return self.float(CGFloat(swiftFloat),adjustHeight: adjustHeight) as! T
         }
@@ -92,44 +92,44 @@ public class ScaleCalculator: NSObject {
         }
         return value
     }
-    public func float(float:CGFloat) -> CGFloat {
+    open func float(_ float:CGFloat) -> CGFloat {
         return self.float(float,adjustHeight: false)
     }
-    public func float(float:CGFloat, adjustHeight:Bool) -> CGFloat {
+    open func float(_ float:CGFloat, adjustHeight:Bool) -> CGFloat {
         return adjustHeight ? float * w_scale : float * h_scale
     }
-    public func rect(rect:CGRect) -> CGRect {
+    open func rect(_ rect:CGRect) -> CGRect {
         return self.rect(rect,adjustHeight: false)
     }
-    public func rect(rect:CGRect, adjustHeight:Bool) -> CGRect {
-        return CGRectMake(rect.origin.x * w_scale,
-                          rect.origin.y * (adjustHeight ? h_scale : w_scale),
-                          rect.size.width * w_scale,
-                          rect.size.height * (adjustHeight ? h_scale : w_scale))
+    open func rect(_ rect:CGRect, adjustHeight:Bool) -> CGRect {
+        return CGRect(x: rect.origin.x * w_scale,
+                          y: rect.origin.y * (adjustHeight ? h_scale : w_scale),
+                          width: rect.size.width * w_scale,
+                          height: rect.size.height * (adjustHeight ? h_scale : w_scale))
     }
-    public func size(size:CGSize) -> CGSize {
+    open func size(_ size:CGSize) -> CGSize {
         return self.size(size,adjustHeight: false)
     }
-    public func size(size:CGSize, adjustHeight:Bool) -> CGSize {
-        return CGSizeMake(size.width * w_scale, size.height * (adjustHeight ? h_scale : w_scale))
+    open func size(_ size:CGSize, adjustHeight:Bool) -> CGSize {
+        return CGSize(width: size.width * w_scale, height: size.height * (adjustHeight ? h_scale : w_scale))
     }
-    public func point(point:CGPoint) -> CGPoint {
+    open func point(_ point:CGPoint) -> CGPoint {
         return self.point(point,adjustHeight: false)
     }
-    public func point(point:CGPoint, adjustHeight:Bool) -> CGPoint {
-        return CGPointMake(point.x * w_scale, point.y * (adjustHeight ? h_scale : w_scale))
+    open func point(_ point:CGPoint, adjustHeight:Bool) -> CGPoint {
+        return CGPoint(x: point.x * w_scale, y: point.y * (adjustHeight ? h_scale : w_scale))
     }
-    public func setView(view:UIView) {
+    open func setView(_ view:UIView) {
         setView(view,adjustHeight: false)
     }
-    public func setView(view:UIView, adjustHeight:Bool) {
+    open func setView(_ view:UIView, adjustHeight:Bool) {
         let frame = rect(view.frame,adjustHeight: adjustHeight)
         view.frame = frame
     }
-    public func setLayer(layer:CALayer) {
+    open func setLayer(_ layer:CALayer) {
         setLayer(layer,adjustHeight: false)
     }
-    public func setLayer(layer:CALayer, adjustHeight:Bool) {
+    open func setLayer(_ layer:CALayer, adjustHeight:Bool) {
         let frame = rect(layer.frame, adjustHeight:adjustHeight)
         layer.frame = frame
     }
