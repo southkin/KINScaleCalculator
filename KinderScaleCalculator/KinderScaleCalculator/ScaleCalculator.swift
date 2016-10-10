@@ -7,11 +7,6 @@
 //
 
 import UIKit
-internal class test {
-    internal init() {
-        print("aa")
-    }
-}
 public enum DeviceType {
     case iphone_320_480 // iPhone 4s
     case iphone_320_568 // iPhone 5, iPhone 5s
