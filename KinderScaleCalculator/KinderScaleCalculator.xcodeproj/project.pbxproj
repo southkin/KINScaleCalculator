@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F1EFABD1DAE96E2009A99D6 /* ProcessQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1EFABC1DAE96E2009A99D6 /* ProcessQueue.swift */; };
 		3F72BC8C1D7DEF28000D3323 /* KinderScaleCalculator.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F72BC8B1D7DEF28000D3323 /* KinderScaleCalculator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F72BC941D7DEF55000D3323 /* ScaleCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F72BC931D7DEF55000D3323 /* ScaleCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F1EFABC1DAE96E2009A99D6 /* ProcessQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessQueue.swift; sourceTree = "<group>"; };
 		3F72BC881D7DEF28000D3323 /* KinderScaleCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KinderScaleCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F72BC8B1D7DEF28000D3323 /* KinderScaleCalculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KinderScaleCalculator.h; sourceTree = "<group>"; };
 		3F72BC8D1D7DEF28000D3323 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,7 +56,6 @@
 			children = (
 				3F72BC8B1D7DEF28000D3323 /* KinderScaleCalculator.h */,
 				3F72BC8D1D7DEF28000D3323 /* Info.plist */,
-				3F1EFABC1DAE96E2009A99D6 /* ProcessQueue.swift */,
 				3F72BC931D7DEF55000D3323 /* ScaleCalculator.swift */,
 			);
 			path = KinderScaleCalculator;
@@ -144,7 +141,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F72BC941D7DEF55000D3323 /* ScaleCalculator.swift in Sources */,
-				3F1EFABD1DAE96E2009A99D6 /* ProcessQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
